@@ -1,3 +1,7 @@
+# ================================================================
+# GENERAL SETTINGS
+# Core window manager behavior and lifecycle commands
+# ================================================================
 general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
@@ -39,6 +43,10 @@ general:
   # - 'false': Only show windows from the currently shown workspaces.
   show_all_in_taskbar: true
 
+# ================================================================
+# GAPS CONFIGURATION
+# Spacing between windows and screen edges
+# ================================================================
 gaps:
   # Whether to scale the gaps with the DPI of the monitor.
   scale_with_dpi: true
@@ -53,6 +61,11 @@ gaps:
     bottom: '2px'
     left: '2px'
 
+# ================================================================
+# WINDOW EFFECTS
+# Visual styling: borders, transparency, corners
+# Note: Some effects require Windows 11
+# ================================================================
 window_effects:
   # Visual effects to apply to the focused window.
   focused_window:
@@ -95,6 +108,10 @@ window_effects:
       enabled: false
       opacity: '0%'
 
+# ================================================================
+# WINDOW BEHAVIOR
+# Default states and behaviors for new windows
+# ================================================================
 window_behavior:
   # New windows are created in this state whenever possible.
   # Allowed values: 'tiling', 'floating'.
@@ -119,6 +136,10 @@ window_behavior:
       # Whether to show fullscreen windows as always on top.
       shown_on_top: false
 
+# ================================================================
+# WORKSPACES
+# Virtual desktop definitions (1-9)
+# ================================================================
 workspaces:
   - name: '1'
   - name: '2'
@@ -130,6 +151,11 @@ workspaces:
   - name: '8'
   - name: '9'
 
+# ================================================================
+# WINDOW RULES
+# Automatic handling for specific windows
+# These windows are ignored by the window manager
+# ================================================================
 window_rules:
   - commands: ['ignore']
     match:
@@ -148,6 +174,10 @@ window_rules:
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
 
+# ================================================================
+# BINDING MODES
+# Special modes with dedicated keybindings
+# ================================================================
 binding_modes:
   # When enabled, the focused window can be resized via arrow keys or HJKL.
   - name: 'resize'
@@ -164,6 +194,12 @@ binding_modes:
       - commands: ['wm-disable-binding-mode --name resize']
         bindings: ['escape', 'enter']
 
+# ================================================================
+# KEYBINDINGS
+# Main keyboard shortcuts for window management
+# All use Alt as the primary modifier
+# See KEYBINDINGS.md for complete reference
+# ================================================================
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']

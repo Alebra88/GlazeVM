@@ -96,6 +96,13 @@ Common unused combinations in this config:
 - Any `ctrl+` combinations
 - Any `win+` combinations (except Windows defaults)
 
+**Important**: Avoid these common system shortcuts:
+- `Ctrl+Alt+L` - Screen lock on many Linux systems
+- `Ctrl+Alt+Del` - Windows security menu
+- `Win+L` - Windows screen lock
+- `Alt+F4` - Close application
+- `Alt+Tab` - Window switcher
+
 ---
 
 ## Customizing Visual Effects

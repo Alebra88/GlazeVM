@@ -318,6 +318,68 @@ window_rules:
       - window_process: { equals: 'app.exe' }
 ```
 
+### IDE and Developer Tool Conflicts
+
+**IMPORTANT**: GlazeWM uses `Alt` key combinations that conflict with IDEs like DataGrip, IntelliJ IDEA, and other JetBrains products.
+
+#### Known DataGrip Conflicts
+
+| GlazeWM Shortcut | DataGrip Function | Conflict |
+|------------------|-------------------|----------|
+| `Alt + Enter` | Show intention actions / Quick fixes | ❌ Major conflict |
+| `Alt + 1-9` | Tool windows (Project, Structure, etc.) | ❌ Major conflict |
+| `Alt + Left/Right` | Navigate back/forward in editor | ❌ Conflict |
+| `Alt + Up/Down` | Navigate between methods | ⚠️ GlazeWM uses Alt+K/J |
+| `Alt + Insert` | Generate code | ✅ Not used in GlazeWM |
+| `Alt + F7` | Find usages | ✅ Not used in GlazeWM |
+| `Ctrl + Alt + L` | Reformat code | ✅ Protected (see warning above) |
+
+#### Solution 1: Ignore DataGrip (Recommended for DataGrip users)
+
+Add DataGrip to window_rules to prevent GlazeWM from intercepting its shortcuts:
+
+```yaml
+window_rules:
+  # Ignore DataGrip and other JetBrains IDEs
+  - commands: ['ignore']
+    match:
+      # DataGrip
+      - window_process: { equals: 'datagrip64' }
+      
+      # Other JetBrains IDEs (add as needed)
+      - window_process: { equals: 'idea64' }       # IntelliJ IDEA
+      - window_process: { equals: 'phpstorm64' }   # PhpStorm
+      - window_process: { equals: 'webstorm64' }   # WebStorm
+      - window_process: { equals: 'pycharm64' }    # PyCharm
+      - window_process: { equals: 'rider64' }      # Rider
+      - window_process: { equals: 'clion64' }      # CLion
+      - window_process: { equals: 'goland64' }     # GoLand
+      - window_process: { equals: 'rubymine64' }   # RubyMine
+```
+
+**Note**: With this rule, DataGrip will be completely ignored by GlazeWM (won't tile, won't respond to GlazeWM shortcuts).
+
+#### Solution 2: Use Pause Mode
+
+Press `Alt + Shift + P` to temporarily disable all GlazeWM keybindings when working in DataGrip. Press again to re-enable.
+
+**Best for**: Occasional DataGrip use while keeping it tiled
+
+#### Solution 3: Change to Windows Key
+
+Replace `alt` with `win` in all keybindings to avoid IDE conflicts entirely:
+
+```yaml
+# Example: Change all Alt bindings to Win
+- commands: ['focus --direction left']
+  bindings: ['win+h', 'win+left']  # Changed from alt+h
+
+- commands: ['focus --workspace 1']
+  bindings: ['win+1']  # Changed from alt+1
+```
+
+**Best for**: Heavy IDE users who want full compatibility
+
 ### Ignore Specific Windows
 
 Prevent GlazeWM from managing certain windows:

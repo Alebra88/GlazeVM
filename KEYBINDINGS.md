@@ -181,11 +181,33 @@ Press `Alt + Shift + P` again to unpause.
    - `V` for Vertical/horizontal toggle
 
 ### Conflict Avoidance
+
+#### Windows System Shortcuts (Avoided)
 This configuration avoids conflicts with common Windows shortcuts:
 - `Alt + Tab` (window switcher) - not used
 - `Alt + F4` (close window) - not used
+- `Ctrl + Alt + L` (Linux screen lock) - not used ✅
+- `Win + L` (Windows screen lock) - not used
 - `Ctrl` combinations - completely unused
 - `Win` key - completely unused
+
+#### ⚠️ IDE Conflicts (DataGrip, JetBrains)
+
+**IMPORTANT**: If you use DataGrip or other JetBrains IDEs, these GlazeWM shortcuts conflict:
+
+| GlazeWM | DataGrip/JetBrains | Impact |
+|---------|-------------------|---------|
+| `Alt + Enter` | Show intention actions | 🔴 Critical |
+| `Alt + 1-9` | Tool windows | 🔴 Critical |
+| `Alt + Left/Right` | Navigate back/forward | 🟡 Medium |
+| `Alt + Up/Down` | Navigate methods | 🟡 Medium (GlazeWM uses K/J) |
+
+**Solutions**:
+1. **Recommended**: Add DataGrip to `window_rules` (see config.yaml line 176)
+2. **Alternative**: Use `Alt + Shift + P` to pause GlazeWM when coding
+3. **Advanced**: Change all keybindings to use `Win` key instead of `Alt`
+
+See [CUSTOMIZATION.md](CUSTOMIZATION.md#ide-and-developer-tool-conflicts) for detailed instructions.
 
 ## Customization Tips
 

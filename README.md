@@ -142,11 +142,28 @@ Windows PowerToys tools are configured to be ignored by the window manager:
 - PowerAccent (character picker)
 - Peek (file previewer)
 
+## IDE Compatibility
+
+**Important for DataGrip and JetBrains IDE users:**
+
+This configuration uses `Alt` key shortcuts that conflict with DataGrip and other JetBrains IDEs. 
+
+**Quick Fix:**
+1. Open `config.yaml`
+2. Find the `window_rules` section (around line 159)
+3. Uncomment the DataGrip line:
+   ```yaml
+   - window_process: { equals: 'datagrip64' }  # Remove the # at start
+   ```
+4. Reload: `Alt + Shift + R`
+
+See [CUSTOMIZATION.md](CUSTOMIZATION.md#ide-and-developer-tool-conflicts) for detailed solutions.
+
 ## Troubleshooting
 
 ### Keybindings Not Working
 1. Ensure GlazeWM is running (check system tray)
-2. Check if keybindings conflict with other applications
+2. Check if keybindings conflict with other applications (especially IDEs)
 3. Try `Alt + Shift + R` to reload the configuration
 4. Verify you haven't pressed `Alt + Shift + P` (pause mode)
 

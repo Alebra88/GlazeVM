@@ -176,7 +176,8 @@ window_rules:
 
       # JetBrains IDEs - prevents Alt key conflicts with IDE shortcuts
       # Uncomment the ones you use:
-      # - window_process: { equals: 'datagrip64' }      # DataGrip
+      - window_process: { equals: 'datagrip64' }      # DataGrip ✅ ENABLED
+      - window_process: { regex: '[Dd]ata[Gg]rip.*' } # DataGrip (all versions)
       # - window_process: { equals: 'idea64' }          # IntelliJ IDEA
       # - window_process: { equals: 'phpstorm64' }      # PhpStorm
       # - window_process: { equals: 'webstorm64' }      # WebStorm
